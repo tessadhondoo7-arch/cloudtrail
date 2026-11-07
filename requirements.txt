@@ -1,0 +1,6 @@
+# Development and test dependencies
+pytest>=8.0
+
+# Install this project itself in "editable" mode so that
+# `import cloudtrail_mapper` works and code changes apply immediately.
+-e .

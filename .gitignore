@@ -1,0 +1,45 @@
+# ---- Python bytecode / caches ----
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- Packaging / build output ----
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Secrets and credentials (never commit these) ----
+.env
+.env.*
+*.pem
+*.key
+credentials
+.aws/
+
+# ---- Real (non-synthetic) CloudTrail data: keep out of the repo ----
+data/raw/
+data/private/
+
+# ---- Generated reports (keep the folder, ignore its contents) ----
+reports/*
+!reports/.gitkeep
+
+# ---- Streamlit local secrets ----
+.streamlit/secrets.toml
