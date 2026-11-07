@@ -1,0 +1,7 @@
+{
+  "Records": [
+    {
+      "eventTime": "2026-01-17T08:00:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets"
+    },

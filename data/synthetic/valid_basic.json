@@ -1,0 +1,124 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEUSER00001",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-01-15T09:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "Mozilla/5.0 (synthetic test agent)",
+      "requestParameters": null,
+      "responseElements": {"ConsoleLogin": "Success"},
+      "eventID": "00000000-0000-4000-8000-000000000001",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEUSER00001",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-01-15T09:05:12Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {"Host": "s3.amazonaws.com"},
+      "responseElements": null,
+      "eventID": "00000000-0000-4000-8000-000000000002",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROAEXAMPLEROLE00001:deploy-session",
+        "arn": "arn:aws:sts::111122223333:assumed-role/DeployRole/deploy-session",
+        "accountId": "111122223333",
+        "sessionContext": {
+          "sessionIssuer": {
+            "type": "Role",
+            "principalId": "AROAEXAMPLEROLE00001",
+            "arn": "arn:aws:iam::111122223333:role/DeployRole",
+            "accountId": "111122223333",
+            "userName": "DeployRole"
+          }
+        }
+      },
+      "eventTime": "2026-01-15T09:10:30.123Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "eu-west-1",
+      "sourceIPAddress": "198.51.100.25",
+      "userAgent": "aws-sdk-python/1.0 (synthetic)",
+      "requestParameters": {"maxResults": 50},
+      "responseElements": null,
+      "eventID": "00000000-0000-4000-8000-000000000003",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "AWSService",
+        "invokedBy": "ec2.amazonaws.com"
+      },
+      "eventTime": "2026-01-15T09:15:00Z",
+      "eventSource": "sts.amazonaws.com",
+      "eventName": "AssumeRole",
+      "awsRegion": "eu-west-1",
+      "sourceIPAddress": "ec2.amazonaws.com",
+      "userAgent": "ec2.amazonaws.com",
+      "requestParameters": {
+        "roleArn": "arn:aws:iam::111122223333:role/InstanceRole",
+        "roleSessionName": "i-0example0000000001"
+      },
+      "responseElements": null,
+      "eventID": "00000000-0000-4000-8000-000000000004",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEUSER00002",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-01-15T09:20:45Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "ListUsers",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.44",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "errorCode": "AccessDenied",
+      "errorMessage": "User is not authorized to perform iam:ListUsers (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "00000000-0000-4000-8000-000000000005",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "111122223333"
+    }
+  ]
+}

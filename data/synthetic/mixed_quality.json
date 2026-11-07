@@ -1,0 +1,68 @@
+{
+  "Records": [
+    {
+      "eventTime": "2026-01-16T12:00:00Z",
+      "eventSource": "S3.AMAZONAWS.COM",
+      "eventName": " GetObject ",
+      "awsRegion": " US-WEST-2 ",
+      "sourceIPAddress": "2001:DB8:0:0:0:0:0:1",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventID": "00000000-0000-4000-8000-000000000101",
+      "readOnly": "true"
+    },
+    {
+      "eventTime": "2026-01-16T12:01:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "eventID": "00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "eventTime": "2026-01-16T12:00:00Z",
+      "eventSource": "S3.AMAZONAWS.COM",
+      "eventName": " GetObject ",
+      "awsRegion": " US-WEST-2 ",
+      "sourceIPAddress": "2001:DB8:0:0:0:0:0:1",
+      "userIdentity": {
+        "type": "IAMUser",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventID": "00000000-0000-4000-8000-000000000101",
+      "readOnly": "true"
+    },
+    {
+      "eventTime": "2026-01-16T12:05:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "StopInstances",
+      "awsRegion": "us-west-2",
+      "eventID": "00000000-0000-4000-8000-000000000102"
+    },
+    {
+      "eventTime": "2026-01-16T12:06:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "awsRegion": "us-west-2",
+      "eventID": "00000000-0000-4000-8000-000000000103"
+    },
+    {
+      "eventTime": "yesterday afternoon",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeVolumes",
+      "eventID": "00000000-0000-4000-8000-000000000104"
+    },
+    "this record is a string, not an object",
+    {
+      "eventTime": "2026-01-16T14:30:00+02:00",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "GetUser",
+      "awsRegion": "not-a-region",
+      "sourceIPAddress": "unknown-host",
+      "userIdentity": "should-be-an-object"
+    }
+  ]
+}

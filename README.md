@@ -4,7 +4,7 @@ A local-only, defensive Python tool that analyses AWS CloudTrail JSON log files,
 detects suspicious activity with explainable rules, maps findings to MITRE ATT&CK
 techniques, and measures detection quality against labeled ground truth.
 
-> **Status:** Milestone 1 (project foundation). No detection logic yet.
+> **Status:** Milestone 2 (loading, validation, normalization). No detection logic yet.
 
 ## Goals
 
@@ -52,11 +52,40 @@ pip install -r requirements.txt
 pytest
 ```
 
+## Usage: load and validate CloudTrail files
+
+```powershell
+python -m cloudtrail_mapper data/synthetic
+python -m cloudtrail_mapper data/synthetic/valid_basic.json --show 10
+```
+
+The loader accepts files (`.json`, `.json.gz`) and directories. It never crashes on
+bad input; instead it reports:
+
+- **errors**: a file or record was skipped (invalid JSON, missing `Records`,
+  missing `eventTime`/`eventName`/`eventSource`, unparseable time, non-object record)
+- **warnings**: a record was kept but looks odd (empty file, missing `eventID`,
+  unusual region or source IP, duplicate `eventID`)
+
+Normalization: times → UTC, `eventSource` and region lowercased, IPs canonicalized,
+AWS-service callers flagged, best identity name extracted from `userIdentity`.
+
+## Pipeline modules
+
+| Module | Responsibility |
+|---|---|
+| `schemas.py` | Data shapes: `NormalizedEvent`, `ValidationIssue`, `LoadResult` |
+| `loader.py` | Read files safely and run the full pipeline (`load_events`) |
+| `normalize.py` | Validate records, normalize fields, remove duplicate `eventID`s |
+
+Sample files in `data/synthetic/` are entirely synthetic: placeholder account IDs
+(`111122223333`) and documentation-only IP ranges (RFC 5737 / RFC 3849).
+
 ## Roadmap
 
 1. Project foundation ✅
-2. Load and validate CloudTrail events
-3. Normalize events
+2. Load and validate CloudTrail events ✅
+3. Normalize events ✅
 4. Explainable detection rules
 5. MITRE ATT&CK mapping
 6. Evaluation against ground truth
