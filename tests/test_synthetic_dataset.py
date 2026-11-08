@@ -34,7 +34,7 @@ KNOWN_RULES = {
     "cloudtrail_logging_disabled",
     "access_denied_burst",
     "iam_user_or_key_creation",
-    "admin_policy_attached",
+    "iam_policy_modification",
     "s3_bucket_made_public",
     "security_group_open_to_world",
 }
@@ -92,17 +92,17 @@ def result():
 # ---------------------------------------------------------------- pipeline
 
 def test_all_scenario_files_load_without_file_level_errors(result):
-    assert result.files_read == 10
+    assert result.files_read == 11
     file_level = [i for i in result.issues if i.record_index is None]
     assert file_level == []
 
 
 def test_dataset_size(result, labels):
-    assert result.records_seen == 70
-    assert len(result.events) == 64
+    assert result.records_seen == 82
+    assert len(result.events) == 76
     kept = [r for r in labels if r["pipeline_outcome"] == "kept"]
-    assert sum(r["label"] == "suspicious" for r in kept) == 34
-    assert sum(r["label"] == "benign" for r in kept) == 30
+    assert sum(r["label"] == "suspicious" for r in kept) == 39
+    assert sum(r["label"] == "benign" for r in kept) == 37
 
 
 def test_pipeline_outcomes_match_labels(result, labels_by_key):
@@ -119,7 +119,8 @@ def test_pipeline_outcomes_match_labels(result, labels_by_key):
 def test_files_are_read_in_sorted_order():
     names = [p.name for p in expand_paths([SCENARIOS_DIR])]
     assert names == sorted(names)
-    assert names[0].startswith("s01_") and names[-1].startswith("s10_")
+    assert names[0].startswith("s01_") and names[-1].startswith("s11_")
+    assert names.index("s01_benign_baseline.json") < names.index("s10_edge_cases.json")
 
 
 def test_cross_file_duplicate_keeps_the_s01_copy(result, labels):
@@ -231,16 +232,33 @@ DEFINITIONS = {
         and r.get("eventName") in {"CreateUser", "CreateAccessKey", "CreateLoginProfile"}
         and _ok(r)
     ),
-    "admin_policy_attached": lambda r: (
-        r.get("eventName") in {"AttachUserPolicy", "AttachRolePolicy", "AttachGroupPolicy"}
-        and str((r.get("requestParameters") or {}).get("policyArn", "")).endswith("/AdministratorAccess")
+    # The API list is written out here on purpose (not imported from the rule)
+    # so that the labels are checked against the documented definition.
+    "iam_policy_modification": lambda r: (
+        _src(r) == "iam.amazonaws.com"
+        and r.get("eventName") in {
+            "AttachUserPolicy", "AttachGroupPolicy", "AttachRolePolicy",
+            "PutUserPolicy", "PutGroupPolicy", "PutRolePolicy",
+            "CreatePolicyVersion", "SetDefaultPolicyVersion", "UpdateAssumeRolePolicy",
+            "DeleteUserPermissionsBoundary", "DeleteRolePermissionsBoundary", "AddUserToGroup",
+            "DetachUserPolicy", "DetachGroupPolicy", "DetachRolePolicy",
+            "DeleteUserPolicy", "DeleteGroupPolicy", "DeleteRolePolicy",
+            "CreatePolicy", "DeletePolicy", "DeletePolicyVersion",
+            "PutUserPermissionsBoundary", "PutRolePermissionsBoundary",
+        }
         and _ok(r)
     ),
 }
 
 # Benign events that a rule matching the definition WILL flag. These are
 # intentional hard negatives that will show up as false positives.
-KNOWN_FALSE_POSITIVES = {("iam_user_or_key_creation", "s07-0101")}
+KNOWN_FALSE_POSITIVES = {
+    ("iam_user_or_key_creation", "s07-0101"),
+    ("iam_policy_modification", "s11-0101"),
+    ("iam_policy_modification", "s11-0102"),
+    ("iam_policy_modification", "s11-0103"),
+    ("iam_policy_modification", "s11-0104"),
+}
 
 
 @pytest.mark.parametrize("rule", sorted(DEFINITIONS))

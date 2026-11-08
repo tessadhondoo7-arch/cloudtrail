@@ -9,10 +9,12 @@ S05,s05_cloudtrail_logging_disabled.json,CloudTrail logging disabled,suspicious,
 S05-HN,s05_cloudtrail_logging_disabled.json,CloudTrail configuration viewed,benign,,read-only DescribeTrails and GetTrailStatus
 S06,s06_access_denied_burst.json,AccessDenied burst,suspicious,access_denied_burst,one role gets 10 denied calls across 7 services in 3 minutes
 S06-HN,s06_access_denied_burst.json,Single AccessDenied,benign,,bob gets one denied call
-S07,s07_iam_user_and_key_creation.json,New admin user with access key,suspicious,iam_user_or_key_creation;admin_policy_attached,"CreateUser, CreateAccessKey and AttachUserPolicy(AdministratorAccess) from an unusual IP"
+S07,s07_iam_user_and_key_creation.json,New admin user with access key,suspicious,iam_user_or_key_creation;iam_policy_modification,"CreateUser, CreateAccessKey and AttachUserPolicy(AdministratorAccess) from an unusual IP"
 S07-HN,s07_iam_user_and_key_creation.json,Routine access key rotation,benign,,carol creates a new key for herself and deletes the old one (expected false positive)
 S08,s08_s3_bucket_made_public.json,S3 bucket made public,suspicious,s3_bucket_made_public,bucket policy with Principal * and public access block removed
 S08-HN,s08_s3_bucket_made_public.json,S3 policy limited to own account,benign,,bucket policy granting access only to the account itself
 S09,s09_security_group_open_to_world.json,Security group open to world,suspicious,security_group_open_to_world,SSH port 22 opened to 0.0.0.0/0
 S09-HN,s09_security_group_open_to_world.json,Narrow security group rule,benign,,HTTPS port 443 opened to one /24 range
 S10,s10_edge_cases.json,Edge cases,mixed,repeated_failed_console_login,"missing/invalid fields, duplicates (exact, conflicting, cross-file), no eventID, IPv6, AWS Internal, mixed case, +02:00 offsets, and a shuffled brute-force burst across midnight"
+S11,s11_iam_policy_modification.json,Risky IAM policy and permission changes,suspicious,iam_policy_modification,"self-granted *:* inline policy, iam:* default policy version, trust open to *, boundary removed, user adds herself to Admins"
+S11-HN,s11_iam_policy_modification.json,Routine IAM policy changes and look-alikes,benign,,"approved attach, CI bucket-scoped policy, detach, version cleanup (flagged: known false positives); read-only IAM calls and a failed PutUserPolicy (must not be flagged)"

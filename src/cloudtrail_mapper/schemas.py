@@ -93,3 +93,53 @@ class LoadResult:
     @property
     def warnings(self) -> list[ValidationIssue]:
         return [i for i in self.issues if i.severity == "warning"]
+
+
+# ---------------------------------------------------------------------------
+# Detection output
+# ---------------------------------------------------------------------------
+
+Level = Literal["low", "medium", "high"]
+
+FINDING_DISCLAIMER = (
+    "A match means this activity deserves review. It does not prove malicious intent."
+)
+
+
+@dataclass
+class EventRef:
+    """Points back to the exact record a finding is based on.
+
+    eventID alone is not enough: some records have none, so we also keep the
+    file and position (the same key used in data/labels/ground_truth.csv).
+    """
+
+    source_file: str | None
+    record_index: int | None
+    event_id: str | None
+
+
+@dataclass
+class Finding:
+    """One result produced by a detection rule, with the evidence behind it."""
+
+    rule_id: str  # stable identifier, also used in ground_truth.csv
+    rule_name: str  # human-readable name
+    title: str  # one-line summary of what happened
+    severity: Level  # potential impact IF the activity were misused
+    severity_reason: str
+    confidence: Level  # how strongly the evidence suggests it is not routine
+    confidence_reason: str
+    first_seen: datetime
+    last_seen: datetime
+    identity: str | None  # who performed the activity
+    event_ids: list[str]  # eventIDs involved (records without one are omitted)
+    event_refs: list[EventRef]  # every record involved, including ones without eventID
+    reasons: list[str]  # plain-language reasons the rule triggered
+    evidence: dict[str, Any]  # the CloudTrail values the decision was based on
+    benign_explanations: list[str]  # common legitimate reasons for this activity
+    # MITRE ATT&CK mapping is intentionally empty until it has been verified
+    # against the official ATT&CK knowledge base in a later milestone.
+    mitre_attack: list[dict[str, str]] = field(default_factory=list)
+    mitre_status: str = "not_mapped"
+    disclaimer: str = FINDING_DISCLAIMER
