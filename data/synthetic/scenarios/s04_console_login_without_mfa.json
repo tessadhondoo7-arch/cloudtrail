@@ -1,0 +1,64 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEBOB",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-02-10T13:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.11",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s04-0001",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEBOB",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-02-10T17:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.11",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "Yes"
+      },
+      "eventID": "s04-0101",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    }
+  ]
+}

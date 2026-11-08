@@ -1,0 +1,102 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLECAROL",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventTime": "2026-02-10T12:30:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "DescribeTrails",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.12",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s05-0101",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLECAROL",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventTime": "2026-02-10T12:31:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "GetTrailStatus",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.12",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {
+        "name": "arn:aws:cloudtrail:us-east-1:111122223333:trail/synthetic-audit-trail"
+      },
+      "responseElements": null,
+      "eventID": "s05-0102",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLECAROL",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventTime": "2026-02-10T18:00:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.120",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {
+        "name": "arn:aws:cloudtrail:us-east-1:111122223333:trail/synthetic-audit-trail"
+      },
+      "responseElements": null,
+      "eventID": "s05-0001",
+      "readOnly": false,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLECAROL",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventTime": "2026-02-10T18:01:00Z",
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "DeleteTrail",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.120",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {
+        "name": "arn:aws:cloudtrail:us-east-1:111122223333:trail/synthetic-audit-trail"
+      },
+      "responseElements": null,
+      "eventID": "s05-0002",
+      "readOnly": false,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    }
+  ]
+}

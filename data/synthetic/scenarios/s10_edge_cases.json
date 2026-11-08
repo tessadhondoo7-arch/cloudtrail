@@ -1,0 +1,470 @@
+{
+  "Records": [
+    {
+      "eventTime": "2026-02-10T10:15:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "eventID": "s10-0001"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T10:16:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0002",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "02/10/2026 10:20",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0003",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T10:25:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "GetObject",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {
+        "bucketName": "synthetic-reports-bucket",
+        "key": "daily/summary.csv"
+      },
+      "responseElements": null,
+      "eventID": "s10-0004",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T10:25:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "GetObject",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {
+        "bucketName": "synthetic-reports-bucket",
+        "key": "daily/summary.csv"
+      },
+      "responseElements": null,
+      "eventID": "s10-0004",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEBOB",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-02-10T10:30:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeInstances",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.11",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0005",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEBOB",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-02-10T10:30:00Z",
+      "eventSource": "ec2.amazonaws.com",
+      "eventName": "DescribeVolumes",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.11",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0005",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T08:35:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "GetObject",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": {
+        "bucketName": "synthetic-reports-bucket",
+        "key": "weekly/report.csv"
+      },
+      "responseElements": null,
+      "eventID": "s01-0003",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLECAROL",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventTime": "2026-02-10T10:40:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.12",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T10:45:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "2001:DB8:0:0:0:0:0:10",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0006",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "AWSService",
+        "invokedBy": "AWS Internal"
+      },
+      "eventTime": "2026-02-10T10:47:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "eventName": "GetBucketLocation",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "AWS Internal",
+      "userAgent": "AWS Internal",
+      "requestParameters": {
+        "bucketName": "synthetic-reports-bucket"
+      },
+      "responseElements": null,
+      "eventID": "s10-0007",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEBOB",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-02-10T10:48:00Z",
+      "eventSource": "s3.amazonaws.com",
+      "EventName": "ListBuckets",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.11",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0008",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEBOB",
+        "arn": "arn:aws:iam::111122223333:user/bob",
+        "accountId": "111122223333",
+        "userName": "bob"
+      },
+      "eventTime": "2026-02-10T10:50:00Z",
+      "eventSource": "EC2.AmazonAWS.com",
+      "eventName": "DescribeRegions",
+      "awsRegion": " US-EAST-1 ",
+      "sourceIPAddress": "203.0.113.11",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0009",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLECAROL",
+        "arn": "arn:aws:iam::111122223333:user/carol",
+        "accountId": "111122223333",
+        "userName": "carol"
+      },
+      "eventTime": "2026-02-10T13:00:00+02:00",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "ListUsers",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.12",
+      "userAgent": "aws-cli/2.15.0 (synthetic)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s10-0010",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEFRANK",
+        "arn": "arn:aws:iam::111122223333:user/frank",
+        "accountId": "111122223333",
+        "userName": "frank"
+      },
+      "eventTime": "2026-02-11T00:00:15Z",
+      "eventSource": "SIGNIN.AmazonAWS.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.66",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s10-0104",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEFRANK",
+        "arn": "arn:aws:iam::111122223333:user/frank",
+        "accountId": "111122223333",
+        "userName": "frank"
+      },
+      "eventTime": "2026-02-10T23:58:50Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.66",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s10-0102",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEFRANK",
+        "arn": "arn:aws:iam::111122223333:user/frank",
+        "accountId": "111122223333",
+        "userName": "frank"
+      },
+      "eventTime": "2026-02-11T02:01:05+02:00",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.66",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s10-0105",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEFRANK",
+        "arn": "arn:aws:iam::111122223333:user/frank",
+        "accountId": "111122223333",
+        "userName": "frank"
+      },
+      "eventTime": "2026-02-10T23:58:10Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.66",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s10-0101",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEFRANK",
+        "arn": "arn:aws:iam::111122223333:user/frank",
+        "accountId": "111122223333",
+        "userName": "frank"
+      },
+      "eventTime": "2026-02-11T01:59:30+02:00",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "192.0.2.66",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s10-0103",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    }
+  ]
+}

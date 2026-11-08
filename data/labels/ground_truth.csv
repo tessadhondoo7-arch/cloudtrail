@@ -1,0 +1,71 @@
+file,record_index,event_id,scenario_id,label,expected_rule,pipeline_outcome,notes
+s01_benign_baseline.json,0,s01-0001,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,1,s01-0002,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,2,s01-0003,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,3,s01-0004,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,4,s01-0005,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,5,s01-0006,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,6,s01-0007,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,7,s01-0008,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,8,s01-0009,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,9,s01-0010,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,10,s01-0011,S01,benign,,kept,routine workday activity
+s01_benign_baseline.json,11,s01-0012,S01,benign,,kept,routine workday activity
+s02_failed_console_logins.json,0,s02-0101,S02-HN,benign,,kept,single mistyped password from usual IP; failed login so MFA rule does not apply
+s02_failed_console_logins.json,1,s02-0102,S02-HN,benign,,kept,successful retry with MFA
+s02_failed_console_logins.json,2,s02-0001,S02,suspicious,repeated_failed_console_login,kept,failed login 1 of 6 within 5 minutes; failed so MFA rule does not apply
+s02_failed_console_logins.json,3,s02-0002,S02,suspicious,repeated_failed_console_login,kept,failed login 2 of 6 within 5 minutes; failed so MFA rule does not apply
+s02_failed_console_logins.json,4,s02-0003,S02,suspicious,repeated_failed_console_login,kept,failed login 3 of 6 within 5 minutes; failed so MFA rule does not apply
+s02_failed_console_logins.json,5,s02-0004,S02,suspicious,repeated_failed_console_login,kept,failed login 4 of 6 within 5 minutes; failed so MFA rule does not apply
+s02_failed_console_logins.json,6,s02-0005,S02,suspicious,repeated_failed_console_login,kept,failed login 5 of 6 within 5 minutes; failed so MFA rule does not apply
+s02_failed_console_logins.json,7,s02-0006,S02,suspicious,repeated_failed_console_login,kept,failed login 6 of 6 within 5 minutes; failed so MFA rule does not apply
+s02_failed_console_logins.json,8,s02-0007,S02,suspicious,repeated_failed_console_login,kept,success right after the burst from same IP (possible guessed password); MFA was used
+s03_root_account_usage.json,0,s03-0001,S03,suspicious,root_account_activity;console_login_without_mfa,kept,root console login without MFA
+s03_root_account_usage.json,1,s03-0002,S03,suspicious,root_account_activity,kept,root enumerating IAM users
+s03_root_account_usage.json,2,s03-0003,S03,suspicious,root_account_activity;iam_user_or_key_creation,kept,root creating an access key
+s04_console_login_without_mfa.json,0,s04-0001,S04,suspicious,console_login_without_mfa,kept,successful console login without MFA
+s04_console_login_without_mfa.json,1,s04-0101,S04-HN,benign,,kept,"same user, MFA used"
+s05_cloudtrail_logging_disabled.json,0,s05-0101,S05-HN,benign,,kept,read-only: viewing trail configuration
+s05_cloudtrail_logging_disabled.json,1,s05-0102,S05-HN,benign,,kept,read-only: checking trail status
+s05_cloudtrail_logging_disabled.json,2,s05-0001,S05,suspicious,cloudtrail_logging_disabled,kept,audit logging stopped from unusual IP
+s05_cloudtrail_logging_disabled.json,3,s05-0002,S05,suspicious,cloudtrail_logging_disabled,kept,audit trail deleted
+s06_access_denied_burst.json,0,s06-0001,S06,suspicious,access_denied_burst,kept,denied call 1 of 10 within 3 minutes
+s06_access_denied_burst.json,1,s06-0002,S06,suspicious,access_denied_burst,kept,denied call 2 of 10 within 3 minutes
+s06_access_denied_burst.json,2,s06-0003,S06,suspicious,access_denied_burst,kept,denied call 3 of 10 within 3 minutes
+s06_access_denied_burst.json,3,s06-0004,S06,suspicious,access_denied_burst,kept,denied call 4 of 10 within 3 minutes
+s06_access_denied_burst.json,4,s06-0005,S06,suspicious,access_denied_burst,kept,denied call 5 of 10 within 3 minutes
+s06_access_denied_burst.json,5,s06-0006,S06,suspicious,access_denied_burst,kept,denied call 6 of 10 within 3 minutes
+s06_access_denied_burst.json,6,s06-0007,S06,suspicious,access_denied_burst,kept,denied call 7 of 10 within 3 minutes
+s06_access_denied_burst.json,7,s06-0008,S06,suspicious,access_denied_burst,kept,denied call 8 of 10 within 3 minutes
+s06_access_denied_burst.json,8,s06-0009,S06,suspicious,access_denied_burst,kept,denied call 9 of 10 within 3 minutes
+s06_access_denied_burst.json,9,s06-0010,S06,suspicious,access_denied_burst,kept,denied call 10 of 10 within 3 minutes
+s06_access_denied_burst.json,10,s06-0101,S06-HN,benign,,kept,single denied call; everyday misconfiguration
+s07_iam_user_and_key_creation.json,0,s07-0001,S07,suspicious,iam_user_or_key_creation,kept,new IAM user created from unusual IP
+s07_iam_user_and_key_creation.json,1,s07-0002,S07,suspicious,iam_user_or_key_creation,kept,access key created for the new user
+s07_iam_user_and_key_creation.json,2,s07-0003,S07,suspicious,admin_policy_attached,kept,full admin rights given to the new user
+s07_iam_user_and_key_creation.json,3,s07-0101,S07-HN,benign,,kept,routine key rotation; a naive iam_user_or_key_creation rule WILL flag this (expected false positive)
+s07_iam_user_and_key_creation.json,4,s07-0102,S07-HN,benign,,kept,old key deleted as part of rotation
+s08_s3_bucket_made_public.json,0,s08-0001,S08,suspicious,s3_bucket_made_public,kept,bucket policy allows anyone (Principal *) to read
+s08_s3_bucket_made_public.json,1,s08-0002,S08,suspicious,s3_bucket_made_public,kept,public access block removed
+s08_s3_bucket_made_public.json,2,s08-0101,S08-HN,benign,,kept,policy limited to own account
+s09_security_group_open_to_world.json,0,s09-0001,S09,suspicious,security_group_open_to_world,kept,SSH (22) opened to 0.0.0.0/0
+s09_security_group_open_to_world.json,1,s09-0101,S09-HN,benign,,kept,HTTPS (443) from one narrow range
+s10_edge_cases.json,0,s10-0001,S10,benign,,kept,only the 3 required fields + eventID; all optional fields missing
+s10_edge_cases.json,1,s10-0002,S10,invalid,,rejected,missing required eventName
+s10_edge_cases.json,2,s10-0003,S10,invalid,,rejected,eventTime not ISO 8601
+s10_edge_cases.json,3,s10-0004,S10,benign,,kept,first copy of s10-0004 (kept)
+s10_edge_cases.json,4,s10-0004,S10,benign,,duplicate_dropped,exact duplicate of record 3 (first copy kept)
+s10_edge_cases.json,5,s10-0005,S10,benign,,kept,first copy of s10-0005 (kept)
+s10_edge_cases.json,6,s10-0005,S10,benign,,duplicate_dropped,same eventID as record 5 but eventName differs (conflicting duplicate); first copy kept
+s10_edge_cases.json,7,s01-0003,S10,benign,,duplicate_dropped,exact copy of s01-0003; S01 copy kept because s01_*.json is read before s10_*.json
+s10_edge_cases.json,8,,S10,benign,,kept,"no eventID; kept with a warning, cannot be de-duplicated"
+s10_edge_cases.json,9,s10-0006,S10,benign,,kept,"IPv6 source from 2001:db8::/32 documentation range, uppercase"
+s10_edge_cases.json,10,s10-0007,S10,benign,,kept,source is 'AWS Internal' (AWS acting on your behalf)
+s10_edge_cases.json,11,s10-0008,S10,invalid,,rejected,key spelled 'EventName' instead of 'eventName'
+s10_edge_cases.json,12,s10-0009,S10,benign,,kept,mixed-case eventSource and padded uppercase region
+s10_edge_cases.json,13,s10-0010,S10,benign,,kept,+02:00 offset; 11:00 UTC
+s10_edge_cases.json,14,s10-0104,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
+s10_edge_cases.json,15,s10-0102,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
+s10_edge_cases.json,16,s10-0105,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
+s10_edge_cases.json,17,s10-0101,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
+s10_edge_cases.json,18,s10-0103,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"

@@ -4,7 +4,7 @@ A local-only, defensive Python tool that analyses AWS CloudTrail JSON log files,
 detects suspicious activity with explainable rules, maps findings to MITRE ATT&CK
 techniques, and measures detection quality against labeled ground truth.
 
-> **Status:** Milestone 2 (loading, validation, normalization). No detection logic yet.
+> **Status:** Milestone 3 (synthetic dataset and ground-truth labels). No detection logic yet.
 
 ## Goals
 
@@ -81,13 +81,25 @@ AWS-service callers flagged, best identity name extracted from `userIdentity`.
 Sample files in `data/synthetic/` are entirely synthetic: placeholder account IDs
 (`111122223333`) and documentation-only IP ranges (RFC 5737 / RFC 3849).
 
+## Synthetic scenarios and ground truth
+
+`data/synthetic/scenarios/` holds 10 labeled scenario files (benign baseline,
+suspicious activity, hard negatives, and edge cases). `data/labels/ground_truth.csv`
+labels every record. See [docs/synthetic_dataset.md](docs/synthetic_dataset.md) for
+the scenarios, the label format, and how precision/recall/F1 will be scored.
+
+```powershell
+python -m cloudtrail_mapper data/synthetic/scenarios --show 0
+```
+
 ## Roadmap
 
 1. Project foundation ✅
 2. Load and validate CloudTrail events ✅
 3. Normalize events ✅
-4. Explainable detection rules
-5. MITRE ATT&CK mapping
-6. Evaluation against ground truth
-7. CLI
-8. Streamlit dashboard
+4. Synthetic dataset and ground-truth labels ✅
+5. Explainable detection rules
+6. MITRE ATT&CK mapping
+7. Evaluation against ground truth
+8. CLI
+9. Streamlit dashboard

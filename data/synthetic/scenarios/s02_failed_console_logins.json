@@ -1,0 +1,281 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T09:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0101",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEALICE",
+        "arn": "arn:aws:iam::111122223333:user/alice",
+        "accountId": "111122223333",
+        "userName": "alice"
+      },
+      "eventTime": "2026-02-10T09:00:40Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "203.0.113.10",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "Yes"
+      },
+      "eventID": "s02-0102",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:00:05Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0001",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:00:48Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0002",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:01:30Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0003",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:02:20Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0004",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:03:41Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0005",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:04:30Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "errorMessage": "Failed authentication",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Failure"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s02-0006",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "IAMUser",
+        "principalId": "AIDAEXAMPLEDAVE",
+        "arn": "arn:aws:iam::111122223333:user/dave",
+        "accountId": "111122223333",
+        "userName": "dave"
+      },
+      "eventTime": "2026-02-10T14:05:10Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.77",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "Yes"
+      },
+      "eventID": "s02-0007",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    }
+  ]
+}

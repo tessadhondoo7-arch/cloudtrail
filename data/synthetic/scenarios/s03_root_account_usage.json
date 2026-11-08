@@ -1,0 +1,83 @@
+{
+  "Records": [
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "Root",
+        "principalId": "111122223333",
+        "arn": "arn:aws:iam::111122223333:root",
+        "accountId": "111122223333"
+      },
+      "eventTime": "2026-02-10T15:00:00Z",
+      "eventSource": "signin.amazonaws.com",
+      "eventName": "ConsoleLogin",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.50",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": {
+        "ConsoleLogin": "Success"
+      },
+      "additionalEventData": {
+        "LoginTo": "https://console.aws.amazon.com/console/home",
+        "MobileVersion": "No",
+        "MFAUsed": "No"
+      },
+      "eventID": "s03-0001",
+      "readOnly": false,
+      "eventType": "AwsConsoleSignIn",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "Root",
+        "principalId": "111122223333",
+        "arn": "arn:aws:iam::111122223333:root",
+        "accountId": "111122223333"
+      },
+      "eventTime": "2026-02-10T15:02:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "ListUsers",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.50",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": null,
+      "eventID": "s03-0002",
+      "readOnly": true,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    },
+    {
+      "eventVersion": "1.09",
+      "userIdentity": {
+        "type": "Root",
+        "principalId": "111122223333",
+        "arn": "arn:aws:iam::111122223333:root",
+        "accountId": "111122223333"
+      },
+      "eventTime": "2026-02-10T15:04:00Z",
+      "eventSource": "iam.amazonaws.com",
+      "eventName": "CreateAccessKey",
+      "awsRegion": "us-east-1",
+      "sourceIPAddress": "198.51.100.50",
+      "userAgent": "Mozilla/5.0 (synthetic test browser)",
+      "requestParameters": null,
+      "responseElements": {
+        "accessKey": {
+          "accessKeyId": "EXAMPLE-KEY-ID-ROOT",
+          "status": "Active",
+          "createDate": "2026-02-10T15:04:00Z"
+        }
+      },
+      "eventID": "s03-0003",
+      "readOnly": false,
+      "eventType": "AwsApiCall",
+      "managementEvent": true,
+      "recipientAccountId": "111122223333"
+    }
+  ]
+}

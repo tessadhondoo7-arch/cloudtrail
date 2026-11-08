@@ -1,0 +1,18 @@
+scenario_id,file,title,label,expected_rule,description
+S01,s01_benign_baseline.json,Normal workday,benign,,"MFA console logins, S3/EC2/CloudWatch reads, CI role deployments, AWS-service calls"
+S02,s02_failed_console_logins.json,Repeated failed console logins then success,suspicious,repeated_failed_console_login,"6 failed logins for dave in 5 minutes from one IP, then a successful login with MFA"
+S02-HN,s02_failed_console_logins.json,Single mistyped password,benign,,alice fails once then succeeds with MFA from her usual IP
+S03,s03_root_account_usage.json,Root account usage,suspicious,root_account_activity;console_login_without_mfa;iam_user_or_key_creation,"root logs in without MFA, lists users and creates an access key"
+S04,s04_console_login_without_mfa.json,Console login without MFA,suspicious,console_login_without_mfa,bob signs in successfully without MFA
+S04-HN,s04_console_login_without_mfa.json,Console login with MFA,benign,,bob signs in with MFA
+S05,s05_cloudtrail_logging_disabled.json,CloudTrail logging disabled,suspicious,cloudtrail_logging_disabled,StopLogging then DeleteTrail from an unusual IP
+S05-HN,s05_cloudtrail_logging_disabled.json,CloudTrail configuration viewed,benign,,read-only DescribeTrails and GetTrailStatus
+S06,s06_access_denied_burst.json,AccessDenied burst,suspicious,access_denied_burst,one role gets 10 denied calls across 7 services in 3 minutes
+S06-HN,s06_access_denied_burst.json,Single AccessDenied,benign,,bob gets one denied call
+S07,s07_iam_user_and_key_creation.json,New admin user with access key,suspicious,iam_user_or_key_creation;admin_policy_attached,"CreateUser, CreateAccessKey and AttachUserPolicy(AdministratorAccess) from an unusual IP"
+S07-HN,s07_iam_user_and_key_creation.json,Routine access key rotation,benign,,carol creates a new key for herself and deletes the old one (expected false positive)
+S08,s08_s3_bucket_made_public.json,S3 bucket made public,suspicious,s3_bucket_made_public,bucket policy with Principal * and public access block removed
+S08-HN,s08_s3_bucket_made_public.json,S3 policy limited to own account,benign,,bucket policy granting access only to the account itself
+S09,s09_security_group_open_to_world.json,Security group open to world,suspicious,security_group_open_to_world,SSH port 22 opened to 0.0.0.0/0
+S09-HN,s09_security_group_open_to_world.json,Narrow security group rule,benign,,HTTPS port 443 opened to one /24 range
+S10,s10_edge_cases.json,Edge cases,mixed,repeated_failed_console_login,"missing/invalid fields, duplicates (exact, conflicting, cross-file), no eventID, IPv6, AWS Internal, mixed case, +02:00 offsets, and a shuffled brute-force burst across midnight"
