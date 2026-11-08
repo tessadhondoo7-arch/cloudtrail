@@ -31,7 +31,8 @@ data/
 │       ├── s01_benign_baseline.json
 │       ├── s02_failed_console_logins.json
 │       ├── ...
-│       └── s10_edge_cases.json
+│       ├── s10_edge_cases.json
+│       └── s11_iam_policy_modification.json
 └── labels/
     ├── ground_truth.csv     ← one row per record
     └── scenarios.csv        ← one row per scenario
@@ -89,7 +90,7 @@ reviewed too.
 | `cloudtrail_logging_disabled` | `cloudtrail.amazonaws.com` events `StopLogging` or `DeleteTrail`. |
 | `access_denied_burst` | ≥ 8 events from the same identity ARN within 5 minutes with `errorCode` in `AccessDenied`, `AccessDeniedException`, `UnauthorizedOperation`, `Client.UnauthorizedOperation`. |
 | `iam_user_or_key_creation` | successful (no `errorCode`) IAM `CreateUser`, `CreateAccessKey` or `CreateLoginProfile`. |
-| `admin_policy_attached` | successful `AttachUserPolicy` / `AttachRolePolicy` / `AttachGroupPolicy` with a `policyArn` ending in `/AdministratorAccess`. |
+| `iam_policy_modification` | successful IAM call from a fixed list of 23 policy and permission APIs (attach/detach, put/delete inline policy, policy versions, trust policy, permissions boundaries, `AddUserToGroup`). **Implemented**; see [rules/iam_policy_modification.md](rules/iam_policy_modification.md). Replaced the earlier `admin_policy_attached` label: admin grants are now this rule's *high* severity. |
 | `s3_bucket_made_public` | `PutBucketPolicy` with an `Allow` statement whose principal is `*` (or `{"AWS": "*"}`), or `DeleteBucketPublicAccessBlock`. |
 | `security_group_open_to_world` | `AuthorizeSecurityGroupIngress` with a source of `0.0.0.0/0` or `::/0`. |
 
@@ -119,13 +120,15 @@ API name".
 | S05-HN | carol views trail configuration (`DescribeTrails`, `GetTrailStatus`). | Read-only; no change to logging. | `cloudtrail_logging_disabled` | Nothing fires. |
 | S06 | `AppServerRole` gets 10 denied calls across IAM, S3, EC2, KMS, Secrets Manager, Lambda and RDS in 3 minutes, using several error code spellings. | Looks like stolen credentials probing what they can access. | `access_denied_burst` | All 10 flagged. |
 | S06-HN | bob gets one `AccessDenied` on `ListRoles`. | Single denial is an everyday misconfiguration. | `access_denied_burst` | Nothing fires. |
-| S07 | alice, from an unusual IP, creates user `svc-backup-tmp`, creates an access key for it, attaches `AdministratorAccess`. | Classic way to keep long-term access. | `iam_user_or_key_creation`, `admin_policy_attached` | CreateUser and CreateAccessKey: key creation. AttachUserPolicy: admin policy. |
+| S07 | alice, from an unusual IP, creates user `svc-backup-tmp`, creates an access key for it, attaches `AdministratorAccess`. | Classic way to keep long-term access. | `iam_user_or_key_creation`, `iam_policy_modification` | CreateUser and CreateAccessKey: key creation. AttachUserPolicy: policy modification (high severity). |
 | S07-HN | carol rotates her own access key (create new, delete old). | Routine security hygiene. | `iam_user_or_key_creation` | Ideally nothing fires, **but** the rule as defined above *will* flag `CreateAccessKey`. This is a deliberate, known false positive (`s07-0101`) that shows the precision cost of a simple rule. |
 | S08 | bob, from an unusual IP, sets a bucket policy with `Principal: "*"` and removes the bucket's public access block. | Makes data readable by anyone on the internet. | `s3_bucket_made_public` | Both flagged. |
 | S08-HN | carol sets a bucket policy that grants access only to the account itself. | Tightening, not exposing. | `s3_bucket_made_public` | Nothing fires. |
 | S09 | `CIDeployRole` opens SSH (port 22) to `0.0.0.0/0`. | Exposes servers to the whole internet. | `security_group_open_to_world` | 1 event flagged. |
 | S09-HN | carol opens HTTPS (443) to one `/24` documentation range. | Narrow, expected rule. | `security_group_open_to_world` | Nothing fires. |
 | S10 | Edge cases (below). | Tests the pipeline and how robust the future rules are. | pipeline; `repeated_failed_console_login` | Per row; see the table below. |
+| S11 | `AppServerRole` gives **itself** an inline `*:*` policy right after the S06 burst; alice (unusual IP) makes an `iam:*` policy version the default (URL-encoded document), opens `AuditReadRole`'s trust to `*`, removes `CIDeployRole`'s permissions boundary, and adds herself to `Admins`. | Privilege escalation and guardrail removal. | `iam_policy_modification` | All 5 flagged (severity/confidence: high/high, high/medium, high/medium, medium/low, medium/low). |
+| S11-HN | Approved `ReadOnlyAccess` attach; CI adds a bucket-scoped inline policy to another role; detach from a departing user; old policy version deleted; read-only `GetPolicy` / `ListAttachedRolePolicies`; a **failed** `PutUserPolicy`. | Routine administration and look-alikes. | `iam_policy_modification` | The 4 changes **will** be flagged (known false positives `s11-0101`–`0104`). The 2 read-only calls and the failed call must not be. |
 
 ### S10 edge cases, with observed pipeline behaviour
 
@@ -164,12 +167,13 @@ whole folder is loaded.
 
 | | Count |
 |---|---|
-| Records | 70 |
-| Kept by the pipeline | 64 |
+| Scenario files | 11 |
+| Records | 82 |
+| Kept by the pipeline | 76 |
 | Rejected (`invalid`) | 3 |
 | Duplicates dropped | 3 |
-| Kept and `suspicious` | 34 |
-| Kept and `benign` | 30 |
+| Kept and `suspicious` | 39 |
+| Kept and `benign` | 37 |
 
 ## How the labels will be used to score detections
 
@@ -234,7 +238,7 @@ event in the burst is scored individually.
 
 ## Known limitations
 
-- Small and hand-made: 70 records. Metrics from it show whether rules behave as
+- Small and hand-made: 82 records. Metrics from it show whether rules behave as
   designed; they say nothing about real-world accuracy.
 - Field contents are simplified approximations of CloudTrail; not every field a
   real event would carry is present.
@@ -242,3 +246,28 @@ event in the burst is scored individually.
   labels must be reviewed (the single-event checks in the tests help with that).
 - Labels assume the whole `scenarios/` folder is loaded at once (see the duplicates
   section above).
+
+## To-do
+
+- [ ] **Data-integrity warning for conflicting duplicate eventIDs.** Today the
+  pipeline keeps the first copy and drops the later one with a warning (S10,
+  index 6). If the dropped copy were the malicious one, for example in a
+  tampered log, detection would never see it. Later, raise a dedicated
+  data-integrity warning (for example `integrity: conflicting_duplicate_event_id`)
+  that names both copies and the fields that differ. Consider keeping both copies
+  available to the rules. This requires changing `normalize.py`, so it will be
+  agreed before it is implemented, and the S10 labels and tests updated with it.
+- [ ] Clearer message when a required key exists with different capitalization
+  (e.g. `EventName`): today it is reported as "missing eventName".
+
+## Regenerating the dataset
+
+The files are produced by `scripts/generate_synthetic_dataset.py`, which keeps
+each record and its label side by side:
+
+```powershell
+python scripts/generate_synthetic_dataset.py
+pytest tests/test_synthetic_dataset.py
+```
+
+Edit the script, not the JSON or CSV files directly, then re-run the tests.

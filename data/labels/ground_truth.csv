@@ -42,7 +42,7 @@ s06_access_denied_burst.json,9,s06-0010,S06,suspicious,access_denied_burst,kept,
 s06_access_denied_burst.json,10,s06-0101,S06-HN,benign,,kept,single denied call; everyday misconfiguration
 s07_iam_user_and_key_creation.json,0,s07-0001,S07,suspicious,iam_user_or_key_creation,kept,new IAM user created from unusual IP
 s07_iam_user_and_key_creation.json,1,s07-0002,S07,suspicious,iam_user_or_key_creation,kept,access key created for the new user
-s07_iam_user_and_key_creation.json,2,s07-0003,S07,suspicious,admin_policy_attached,kept,full admin rights given to the new user
+s07_iam_user_and_key_creation.json,2,s07-0003,S07,suspicious,iam_policy_modification,kept,full admin rights given to the new user
 s07_iam_user_and_key_creation.json,3,s07-0101,S07-HN,benign,,kept,routine key rotation; a naive iam_user_or_key_creation rule WILL flag this (expected false positive)
 s07_iam_user_and_key_creation.json,4,s07-0102,S07-HN,benign,,kept,old key deleted as part of rotation
 s08_s3_bucket_made_public.json,0,s08-0001,S08,suspicious,s3_bucket_made_public,kept,bucket policy allows anyone (Principal *) to read
@@ -69,3 +69,15 @@ s10_edge_cases.json,15,s10-0102,S10,suspicious,repeated_failed_console_login,kep
 s10_edge_cases.json,16,s10-0105,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
 s10_edge_cases.json,17,s10-0101,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
 s10_edge_cases.json,18,s10-0103,S10,suspicious,repeated_failed_console_login,kept,"frank burst (5 fails in ~3 min across midnight, shuffled file order, some +02:00 times)"
+s11_iam_policy_modification.json,0,s11-0101,S11-HN,benign,,kept,approved read-only access for auditors; iam_policy_modification WILL flag this (expected false positive)
+s11_iam_policy_modification.json,1,s11-0102,S11-HN,benign,,kept,CI deployment adds a bucket-scoped policy; iam_policy_modification WILL flag this (expected false positive)
+s11_iam_policy_modification.json,2,s11-0103,S11-HN,benign,,kept,access removed from a departing user; iam_policy_modification WILL flag this (expected false positive)
+s11_iam_policy_modification.json,3,s11-0104,S11-HN,benign,,kept,old policy version cleaned up; iam_policy_modification WILL flag this (expected false positive)
+s11_iam_policy_modification.json,4,s11-0201,S11-HN,benign,,kept,read-only IAM call; must not be flagged
+s11_iam_policy_modification.json,5,s11-0202,S11-HN,benign,,kept,read-only IAM call with a policy-like name; must not be flagged
+s11_iam_policy_modification.json,6,s11-0203,S11-HN,benign,,kept,FAILED policy change (AccessDenied); failed calls must not be flagged
+s11_iam_policy_modification.json,7,s11-0002,S11,suspicious,iam_policy_modification,kept,new default policy version grants iam:* on *; document is URL-encoded
+s11_iam_policy_modification.json,8,s11-0003,S11,suspicious,iam_policy_modification,kept,trust policy now lets anyone (*) assume the role
+s11_iam_policy_modification.json,9,s11-0004,S11,suspicious,iam_policy_modification,kept,permissions boundary (guardrail) removed
+s11_iam_policy_modification.json,10,s11-0005,S11,suspicious,iam_policy_modification,kept,user adds herself to the Admins group
+s11_iam_policy_modification.json,11,s11-0001,S11,suspicious,iam_policy_modification,kept,role grants itself *:* right after the S06 AccessDenied burst (self-escalation)
